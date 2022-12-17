@@ -318,27 +318,7 @@ void shell() {
 #endif
 }
 
-void test() {
-    char c;
-    c = getch();
-#ifdef _WIN32
-    if (c == PREFIX) {
-        c = getch();
-        printf("%d\n", c);
-    }
-#elif (__unix__) || (__APPLE__)
-    if (c == PREFIX) {
-        c = getch();
-        if (c == NEXT_PREFIX) {
-            c = getch();
-            printf("%c\n", c);
-        }
-    }
-#endif
-}
-
 int main() {
     shell();
-    // test();
     return 0;
 }
