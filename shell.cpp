@@ -5,6 +5,9 @@
 #include <conio.h>
 
 #define PREFIX -32
+#define HOME 71
+#define END 79
+
 #define UP 72
 #define LEFT 75
 #define RIGHT 77
@@ -18,6 +21,10 @@
 
 #define PREFIX 27
 #define NEXT_PREFIX '['
+
+#define HOME 'H'
+#define END 'F'
+
 #define UP 'A'
 #define DOWN 'B'
 #define RIGHT 'C'
@@ -123,6 +130,16 @@ std::string readLine() {
             } else if (c == RIGHT && pos < line.size()) {
                 putch(line[pos]);
                 pos++;
+            } else if (c == HOME) {
+                for (int i = 0; i < pos; i++) {
+                    putch('\b');
+                }
+                pos = 0;
+            } else if (c == END) {
+                for (int i = pos; i < line.size(); i++) {
+                    putch(line[i]);
+                }
+                pos = line.size();
             }
             c = getch();
             continue;
@@ -237,6 +254,16 @@ std::string readLine() {
                 } else if (c == RIGHT && pos < line.size()) {
                     putch(line[pos]);
                     pos++;
+                } else if (c == HOME) {
+                    for (int i = 0; i < pos; i++) {
+                        putch('\b');
+                    }
+                    pos = 0;
+                } else if (c == END) {
+                    for (int i = pos; i < line.size(); i++) {
+                        putch(line[i]);
+                    }
+                    pos = line.size();
                 }
             }
             c = getch();
